@@ -20,18 +20,22 @@ public class Game {
     @Column(name = "game_year")
     private Integer year;
     private String genre;
-    private String plataform;
+    private String platforms;
+    private Double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
-    public Game(Long id, String title, Integer year, String genre, String plataform, String imgUrl,
+    public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
             String shortDescription, String longDescription) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.genre = genre;
-        this.plataform = plataform;
+        this.platforms = platforms;
+        this.score = score;
         this.imgUrl = imgUrl;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
@@ -45,7 +49,7 @@ public class Game {
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((year == null) ? 0 : year.hashCode());
         result = prime * result + ((genre == null) ? 0 : genre.hashCode());
-        result = prime * result + ((plataform == null) ? 0 : plataform.hashCode());
+        result = prime * result + ((platforms == null) ? 0 : platforms.hashCode());
         result = prime * result + ((imgUrl == null) ? 0 : imgUrl.hashCode());
         result = prime * result + ((shortDescription == null) ? 0 : shortDescription.hashCode());
         result = prime * result + ((longDescription == null) ? 0 : longDescription.hashCode());
@@ -81,10 +85,10 @@ public class Game {
                 return false;
         } else if (!genre.equals(other.genre))
             return false;
-        if (plataform == null) {
-            if (other.plataform != null)
+        if (platforms == null) {
+            if (other.platforms != null)
                 return false;
-        } else if (!plataform.equals(other.plataform))
+        } else if (!platforms.equals(other.platforms))
             return false;
         if (imgUrl == null) {
             if (other.imgUrl != null)
@@ -120,8 +124,8 @@ public class Game {
         return genre;
     }
 
-    public String getPlataform() {
-        return plataform;
+    public String getPlatforms() {
+        return platforms;
     }
 
     public String getImgUrl() {
@@ -152,8 +156,8 @@ public class Game {
         this.genre = genre;
     }
 
-    public void setPlataform(String plataform) {
-        this.plataform = plataform;
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
     }
 
     public void setImgUrl(String imgUrl) {
@@ -170,6 +174,14 @@ public class Game {
 
     public Game() {
 
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
     }
 
 }
