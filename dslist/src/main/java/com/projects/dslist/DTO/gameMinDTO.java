@@ -15,6 +15,7 @@ public class gameMinDTO {
 
     }
 
+    // criar a entidade game
     public gameMinDTO(Game entity) {
         id = entity.getId();
         title = entity.getTitle();

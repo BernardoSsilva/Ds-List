@@ -7,16 +7,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/* Neste arquivo é feita a criação da tabela com seus atributos de forma que todos tem seus tipos especificados
+ * a forma como foi definida a tabela faz possivel o return de tipo lista em outras classes
+ */
 @Entity
 @Table(name = "tb_game")
 
 public class Game {
     // criação da tabela em banco de dados por meio do spring
+
+    // definir que id sera auto incremental
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
 
+    // modificar o nome da coluna do banco
     @Column(name = "game_year")
     private Integer year;
 
@@ -24,10 +31,12 @@ public class Game {
     private String platforms;
     private Double score;
     private String imgUrl;
-    
+
+    // definir que tanto a descrição curta quanto a descrição longa serão do tipo
+    // texto
     @Column(columnDefinition = "TEXT")
     private String shortDescription;
-    
+
     @Column(columnDefinition = "TEXT")
     private String longDescription;
 

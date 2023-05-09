@@ -17,6 +17,7 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
+    // controlador que executara as suas funções ao ser acessado pelo mapping
     @GetMapping
     public List<gameMinDTO> findAll() {
         List<gameMinDTO> result = gameService.findAll();
