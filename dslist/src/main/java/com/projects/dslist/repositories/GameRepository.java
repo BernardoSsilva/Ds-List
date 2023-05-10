@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.projects.dslist.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,17 +6,14 @@ import com.projects.dslist.entities.Game;
 
 // interface para criar o serviço
 public interface GameRepository extends JpaRepository<Game, Long> {
-
+@Query(nativeQuery = true, value = """
+		SELECT tb_game.id, tb_game.title, tb_game.game_year AS `year`, tb_game.img_url AS imgUrl,
+		tb_game.short_description AS shortDescription, tb_belonging.position
+		FROM tb_game
+		INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
+		WHERE tb_belonging.list_id = :listId
+		ORDER BY tb_belonging.position
+			""")
+        List<GameMinProjection> searchByList(Long listId);
 }
-=======
-package com.projects.dslist.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.projects.dslist.entities.Game;
-
-// interface para criar o serviço
-public interface GameRepository extends JpaRepository<Game, Long> {
-
-}
->>>>>>> 1444bbe2afd3845d8bd9d22022d7826bb5f119a0
