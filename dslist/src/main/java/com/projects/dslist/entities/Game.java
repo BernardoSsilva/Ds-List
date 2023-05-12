@@ -1,4 +1,3 @@
-
 package com.projects.dslist.entities;
 
 import jakarta.persistence.Column;
